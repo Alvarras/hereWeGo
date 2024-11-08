@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func startRepl() {
+func startRepl(cfg *config) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
@@ -27,15 +27,17 @@ func startRepl() {
 			fmt.Println("Unknown command: ", command)
 			continue
 		}
-		command.callback()
-
+		err := command.callback(cfg)
+		if err != nil {
+			fmt.Println("Error: ", err)
+		}
 	}
 }
 
 type cliCommand struct {
 	name        string
 	description string
-	callback    func() error
+	callback    func(*config) error
 }
 
 func getCommand() map[string]cliCommand {
@@ -44,6 +46,16 @@ func getCommand() map[string]cliCommand {
 			name:        "help",
 			description: "Display help message",
 			callback:    callbackHelp,
+		},
+		"map": {
+			name:        "map",
+			description: "List the next location areas",
+			callback:    callbackMap,
+		},
+		"mapb": {
+			name:        "mapBack",
+			description: "List the previous location areas",
+			callback:    callbackMapBack,
 		},
 		"exit": {
 			name:        "exit",
