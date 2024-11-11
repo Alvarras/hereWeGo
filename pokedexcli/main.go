@@ -1,16 +1,17 @@
 package main
 
-import "github.com/wagslane/pokedexcli/internal/pokeapi"
+import (
+	"time"
 
-type config struct {
-	pokeapiClient       pokeapi.Client
-	nextLocationAreaURL *string
-	prevLocationAreaURL *string
-}
+	"github.com/bootdotdev/go-api-gate/courses/projects/pokedexcli/internal/pokeapi"
+)
 
 func main() {
-	cfg := config{
-		pokeapiClient: pokeapi.NewClient(),
+	pokeClient := pokeapi.NewClient(5*time.Second, 5*time.Minute)
+	cfg := &config{
+		pokeapiClient: pokeClient,
+		caughtPokemon: map[string]pokeapi.Pokemon{},
 	}
-	startRepl(&cfg)
+
+	startRepl(cfg)
 }
