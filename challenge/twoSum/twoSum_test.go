@@ -37,11 +37,11 @@ func TestTwoSum(t *testing.T) {
 			t.Logf("Test case %d PASSED:\nnums: %v\ntarget: %d\nactual: %v\n", i+1, tc.nums, tc.target, result)
 		} else {
 			failCount++
-			t.Errorf("Test case %d FAILED:\nnums: %v\ntarget: %d\nexpected: %v\nactual: %v\n", i+1, tc.nums, tc.target, tc.expected, result)
+			t.Errorf("Test case %d FAILED:\nnums: %v\ntarget: %d\nexpected: %v\nactual: %v\n\n", i+1, tc.nums, tc.target, tc.expected, result)
 		}
 	}
 
-	t.Logf("Total Passed tests: %d", passCount)
-	t.Logf("Total Failed tests: %d", failCount)
+	t.Logf("\nTotal Passed tests: %d", passCount)
+	t.Logf("\nTotal Failed tests: %d", failCount)
 
 }
