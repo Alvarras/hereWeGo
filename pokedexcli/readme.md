@@ -1,4 +1,4 @@
-# Pokedex ClI
+# Pokedex CLI
 
 ## Pokedex in Terminal
 
