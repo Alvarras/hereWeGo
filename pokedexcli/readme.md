@@ -10,10 +10,10 @@
 4. Request Caching (and reaping) + tests
 
 ### Build and Run
-
+```
 cd pokedexcli && go build && ./pokedexcli
-
+```
 ### Run Test
-
+```
 cd pokedexcli && go test ./...
-
+```
